@@ -31,7 +31,10 @@ steps:
     ruby get_session_details.rb ${{ parameters.build_id }}
   displayName: 'Generate build report'
 
-
+- task: AllureGenerate@1
+  inputs:
+    resultsDir: 'allure-results'
+    targetDir: 'allure-report/$(Build.BuildNumber)'
 
 - task: PublishPipelineArtifact@1
   inputs:
